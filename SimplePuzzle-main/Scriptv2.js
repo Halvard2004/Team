@@ -1,11 +1,6 @@
 let currentXPos = 24;
 let currentYPos = 0;
 let colorNumber = 1;
-// addPuzzlePiece('board', false, false, true, true, '', 1, 24, 0);
-// addPuzzlePiece('board', false, true, true, true, '', 2, 18, 0);
-// addPuzzlePiece('board', false, true, true, true, '', 1, 12, 0);
-// addPuzzlePiece('board', true, false, true, true, '', 2, 24, 6);
-
 
 //top right bottom left
 
@@ -19,45 +14,33 @@ addPuzzlePiece('buttons', false, false, true, true, 'addPuzzlePiece(`board`, fal
 addPuzzlePiece('buttons', true, true, false, false, 'addPuzzlePiece(`board`, true, true, false, false, ``, currentXPos, currentYPos)');
 addPuzzlePiece('buttons', true, false, false, true, 'addPuzzlePiece(`board`, true, false, false, true, ``, currentXPos, currentYPos)');
 
-
-
-// function addNormalPuzzlePieceToBoard(){
-//     addPuzzlePiece('board', true, true, true, true, '', currentXPos, currentYPos);
-//     positionChange()
-    
-// }
-
-// function addPuzzlePieceWithoutTopToBoard(){
-//     addPuzzlePiece('board', false, true, true, true, '', currentXPos, currentYPos);
-//     positionChange()
-// }
-
-// function addPuzzlePieceWithoutRightAndTopToBoard(){
-//     addPuzzlePiece('board', false, false, true, true, '', currentXPos, currentYPos);
-//     positionChange()
-// }
-
 function getColorNumber() {
     colorNumber++;
     return (colorNumber % 2) + 1;
 }
 
 function addPuzzlePiece(toId, hasTop, hasRight, hasBottom, hasLeft, onclick, leftPosition, topPosition) {
-    if (leftPosition == 0 && hasLeft){
-        // invalidMove();
-        return
-    }
-    if (leftPosition == 24 && hasRight){
-        // invalidMove();
-        return
-    }
-    if (topPosition == 0 && hasTop){
-        // invalidMove();
-        return
-    }
-    if (topPosition == 24 && hasBottom){
-        // invalidMove();
-        return
+
+    if (toId == 'board') {
+        if ((leftPosition == 0 && hasLeft) || (leftPosition !== 0 && !hasLeft)){
+            // invalidMove();
+            return;
+        }
+        else if ((leftPosition == 24 && hasRight) || (leftPosition !== 24 && !hasRight)){
+            // invalidMove();
+            return;
+        }
+        else if ((topPosition == 0 && hasTop) || (topPosition !== 0 && !hasTop)){
+            // invalidMove();
+            return;
+        }
+        else if ((topPosition == 24 && hasBottom) || (topPosition != 24 && !hasBottom)){
+            // invalidMove();
+            return;
+        }
+        else if (topPosition > 24) {
+            return;
+        }
     }
 
     let style = '';
@@ -74,6 +57,7 @@ function addPuzzlePiece(toId, hasTop, hasRight, hasBottom, hasLeft, onclick, lef
             ${hasLeft ? `<span class="l"></span>` : ''}
         </div>            
     `;
+
     if (toId == 'board') {
         positionChange();
     }
@@ -87,6 +71,9 @@ function positionChange(){
         currentYPos += 6
     }
 }
+
+
+
 
 document.getElementById('exerciseText').innerHTML = /*HTML*/`            
         <h2>Oppgaver</h2>
