@@ -1,4 +1,6 @@
-let currentXPos = 24;
+let maxXPos = 24;
+let maxYPos = 24;
+let currentXPos = maxXPos;
 let currentYPos = 0;
 let colorNumber = 1;
 
@@ -26,7 +28,7 @@ function addPuzzlePiece(toId, hasTop, hasRight, hasBottom, hasLeft, onclick, lef
             // invalidMove();
             return;
         }
-        else if ((leftPosition == 24 && hasRight) || (leftPosition !== 24 && !hasRight)){
+        else if ((leftPosition == maxXPos && hasRight) || (leftPosition !== maxXPos && !hasRight)){
             // invalidMove();
             return;
         }
@@ -34,11 +36,11 @@ function addPuzzlePiece(toId, hasTop, hasRight, hasBottom, hasLeft, onclick, lef
             // invalidMove();
             return;
         }
-        else if ((topPosition == 24 && hasBottom) || (topPosition != 24 && !hasBottom)){
+        else if ((topPosition == maxYPos && hasBottom) || (topPosition != maxYPos && !hasBottom)){
             // invalidMove();
             return;
         }
-        else if (topPosition > 24) {
+        else if (topPosition > maxYPos) {
             return;
         }
     }
@@ -67,7 +69,7 @@ function positionChange(){
     if (currentXPos != 0){
         currentXPos -= 6
     } else {
-        currentXPos = 24
+        currentXPos = maxXPos
         currentYPos += 6
     }
 }
