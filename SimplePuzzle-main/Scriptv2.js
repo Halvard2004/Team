@@ -4,6 +4,8 @@ let currentXPos = maxXPos;
 let currentYPos = 0;
 let colorNumber = 1;
 
+const solution = [7, 2, 2, 2, 6, 3, 1, 1, 1, 5, 3, 1, 1, 1, 5, 3, 1, 1, 1, 5, 9, 4, 4, 4, 8];
+
 addPuzzlePiece('buttons', true, true, true, true, 'addPuzzlePiece(`board`, true, true, true, true, ``, currentXPos, currentYPos)');
 addPuzzlePiece('buttons', false, true, true, true, 'addPuzzlePiece(`board`, false, true, true, true, ``, currentXPos, currentYPos)');
 addPuzzlePiece('buttons', true, false, true, true, 'addPuzzlePiece(`board`, true, false, true, true, ``, currentXPos, currentYPos)');
@@ -13,6 +15,42 @@ addPuzzlePiece('buttons', false, true, true, false, 'addPuzzlePiece(`board`, fal
 addPuzzlePiece('buttons', false, false, true, true, 'addPuzzlePiece(`board`, false, false, true, true, ``, currentXPos, currentYPos)');
 addPuzzlePiece('buttons', true, true, false, false, 'addPuzzlePiece(`board`, true, true, false, false, ``, currentXPos, currentYPos)');
 addPuzzlePiece('buttons', true, false, false, true, 'addPuzzlePiece(`board`, true, false, false, true, ``, currentXPos, currentYPos)');
+
+function puzzleScript(){
+    solution.forEach((number) => addPuzzlePieceByNumber(number))
+}
+
+function addPuzzlePieceByNumber(number) {
+    switch(number){
+        case 1:
+            addPuzzlePiece(`board`, true, true, true, true, ``, currentXPos, currentYPos);
+            break;
+        case 2:
+            addPuzzlePiece(`board`, false, true, true, true, ``, currentXPos, currentYPos);
+            break;
+        case 3:
+            addPuzzlePiece(`board`, true, false, true, true, ``, currentXPos, currentYPos);
+            break;
+        case 4:
+            addPuzzlePiece(`board`, true, true, false, true, ``, currentXPos, currentYPos);
+            break;
+        case 5:
+            addPuzzlePiece(`board`, true, true, true, false, ``, currentXPos, currentYPos);
+            break;
+        case 6:
+            addPuzzlePiece(`board`, false, true, true, false, ``, currentXPos, currentYPos);
+            break;
+        case 7:
+            addPuzzlePiece(`board`, false, false, true, true, ``, currentXPos, currentYPos);
+            break;
+        case 8:
+            addPuzzlePiece(`board`, true, true, false, false, ``, currentXPos, currentYPos);
+            break;
+        case 9:
+            addPuzzlePiece(`board`, true, false, false, true, ``, currentXPos, currentYPos);
+            break;
+    }
+}
 
 function getColorNumber() {
     colorNumber++;
@@ -68,7 +106,8 @@ function positionChange(){
 
 
 
-document.getElementById('exerciseText').innerHTML = /*HTML*/`            
+document.getElementById('exerciseText').innerHTML = /*HTML*/`   
+        <button onclick="puzzleScript()"></button>         
         <h2>Oppgaver</h2>
         <ol>
             <li>Studer koden og prøv å forstå mest mulig av hva som foregår. CSS er ikke viktig, men på
