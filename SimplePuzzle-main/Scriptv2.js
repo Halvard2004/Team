@@ -6,18 +6,18 @@ let colorNumber = 1;
 
 const solution = [7, 2, 2, 2, 6, 3, 1, 1, 1, 5, 3, 1, 1, 1, 5, 3, 1, 1, 1, 5, 9, 4, 4, 4, 8];
 
-addPuzzlePiece('buttons', true, true, true, true, 'addPuzzlePiece(`board`, true, true, true, true, ``, currentXPos, currentYPos)');
-addPuzzlePiece('buttons', false, true, true, true, 'addPuzzlePiece(`board`, false, true, true, true, ``, currentXPos, currentYPos)');
-addPuzzlePiece('buttons', true, false, true, true, 'addPuzzlePiece(`board`, true, false, true, true, ``, currentXPos, currentYPos)');
-addPuzzlePiece('buttons', true, true, false, true, 'addPuzzlePiece(`board`, true, true, false, true, ``, currentXPos, currentYPos)');
-addPuzzlePiece('buttons', true, true, true, false, 'addPuzzlePiece(`board`, true, true, true, false, ``, currentXPos, currentYPos)');
-addPuzzlePiece('buttons', false, true, true, false, 'addPuzzlePiece(`board`, false, true, true, false, ``, currentXPos, currentYPos)');
-addPuzzlePiece('buttons', false, false, true, true, 'addPuzzlePiece(`board`, false, false, true, true, ``, currentXPos, currentYPos)');
-addPuzzlePiece('buttons', true, true, false, false, 'addPuzzlePiece(`board`, true, true, false, false, ``, currentXPos, currentYPos)');
-addPuzzlePiece('buttons', true, false, false, true, 'addPuzzlePiece(`board`, true, false, false, true, ``, currentXPos, currentYPos)');
+addPuzzlePiece('buttons', true, true, true, true, 'addPuzzlePieceByNumber(1)');
+addPuzzlePiece('buttons', false, true, true, true, 'addPuzzlePieceByNumber(2)');
+addPuzzlePiece('buttons', true, false, true, true, 'addPuzzlePieceByNumber(3)');
+addPuzzlePiece('buttons', true, true, false, true, 'addPuzzlePieceByNumber(4)');
+addPuzzlePiece('buttons', true, true, true, false, 'addPuzzlePieceByNumber(5)');
+addPuzzlePiece('buttons', false, true, true, false, 'addPuzzlePieceByNumber(6)');
+addPuzzlePiece('buttons', false, false, true, true, 'addPuzzlePieceByNumber(7)');
+addPuzzlePiece('buttons', true, true, false, false, 'addPuzzlePieceByNumber(8)');
+addPuzzlePiece('buttons', true, false, false, true, 'addPuzzlePieceByNumber(9)');
 
-function puzzleScript(){
-    solution.forEach((number) => addPuzzlePieceByNumber(number))
+function autoCompletePuzzle(){
+    solution.forEach((number) => addPuzzlePieceByNumber(number));
 }
 
 function addPuzzlePieceByNumber(number) {
@@ -107,7 +107,7 @@ function positionChange(){
 
 
 document.getElementById('exerciseText').innerHTML = /*HTML*/`   
-        <button onclick="puzzleScript()"></button>         
+        <button onclick="puzzleScript()">AUTO COMPLETE</button>         
         <h2>Oppgaver</h2>
         <ol>
             <li>Studer koden og prøv å forstå mest mulig av hva som foregår. CSS er ikke viktig, men på
