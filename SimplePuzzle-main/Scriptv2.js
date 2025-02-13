@@ -57,6 +57,7 @@ function getColorNumber() {
     return (colorNumber % 2) + 1;
 }
 
+
 function addPuzzlePiece(toId, hasTop, hasRight, hasBottom, hasLeft, onclick, leftPosition, topPosition) {
 
     if (toId === 'board') {
@@ -107,7 +108,7 @@ function positionChange(){
 
 
 document.getElementById('exerciseText').innerHTML = /*HTML*/`   
-        <button onclick="puzzleScript()">AUTO COMPLETE</button>         
+        <button onclick="autoCompletePuzzle()">AUTO COMPLETE</button>         
         <h2>Oppgaver</h2>
         <ol>
             <li>Studer koden og prøv å forstå mest mulig av hva som foregår. CSS er ikke viktig, men på
