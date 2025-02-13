@@ -4,8 +4,6 @@ let currentXPos = maxXPos;
 let currentYPos = 0;
 let colorNumber = 1;
 
-//top right bottom left
-
 addPuzzlePiece('buttons', true, true, true, true, 'addPuzzlePiece(`board`, true, true, true, true, ``, currentXPos, currentYPos)');
 addPuzzlePiece('buttons', false, true, true, true, 'addPuzzlePiece(`board`, false, true, true, true, ``, currentXPos, currentYPos)');
 addPuzzlePiece('buttons', true, false, true, true, 'addPuzzlePiece(`board`, true, false, true, true, ``, currentXPos, currentYPos)');
@@ -23,30 +21,23 @@ function getColorNumber() {
 
 function addPuzzlePiece(toId, hasTop, hasRight, hasBottom, hasLeft, onclick, leftPosition, topPosition) {
 
-    if (toId == 'board') {
-        if ((leftPosition == 0 && hasLeft) || (leftPosition !== 0 && !hasLeft)){
-            // invalidMove();
-            return;
-        }
-        else if ((leftPosition == maxXPos && hasRight) || (leftPosition !== maxXPos && !hasRight)){
-            // invalidMove();
-            return;
-        }
-        else if ((topPosition == 0 && hasTop) || (topPosition !== 0 && !hasTop)){
-            // invalidMove();
-            return;
-        }
-        else if ((topPosition == maxYPos && hasBottom) || (topPosition != maxYPos && !hasBottom)){
-            // invalidMove();
-            return;
-        }
-        else if (topPosition > maxYPos) {
-            return;
-        }
+    if (toId === 'board') {
+        const invalidMove =
+            (leftPosition === 0 && hasLeft) ||
+            (leftPosition !== 0 && !hasLeft) ||
+            (leftPosition === maxXPos && hasRight) ||
+            (leftPosition !== maxXPos && !hasRight) ||
+            (topPosition === 0 && hasTop) ||
+            (topPosition !== 0 && !hasTop) ||
+            (topPosition === maxYPos && hasBottom) ||
+            (topPosition !== maxYPos && !hasBottom) ||
+            (topPosition > maxYPos);
+    
+        if (invalidMove) return;
     }
 
     let style = '';
-    if (leftPosition !== undefined) { 
+    if (leftPosition !== undefined) {
         style = `left: ${leftPosition + 0.5}em; top: ${topPosition + 0.5}em`;
     }
     
